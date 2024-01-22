@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsNumber } from 'class-validator';
 
-export class DvdDetailDTO {
+export class FriendDetailDTO {
   @IsNumber()
   @IsNotEmpty()
-  dvdId: number;
+  friendId: number;
 }

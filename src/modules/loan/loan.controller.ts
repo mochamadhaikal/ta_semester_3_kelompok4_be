@@ -1,6 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { LoanService } from './loan.service';
 import { Loan } from './entities';
+import { LoanDetailDTO, LoanCreateDTO, LoanUpdateDTO } from './dto';
+import { Res } from 'src/configs';
 
 @Controller('loan')
 export class LoanController {
@@ -11,23 +13,23 @@ export class LoanController {
     return this.loanService.findAll();
   }
 
-  @Get('/detail/:id')
-  findOne(@Param('id') id: number): Promise<Loan> {
-    return this.loanService.findOne(id);
+  @Post('/detail')
+  findOne(@Body() item: LoanDetailDTO): Promise<Loan> {
+    return this.loanService.findOne(item);
   }
 
   @Post('/save')
-  create(@Body() item: Loan): Promise<Loan> {
+  create(@Body() item: LoanCreateDTO): Promise<Res> {
     return this.loanService.create(item);
   }
 
   @Post('/edit')
-  async update(@Body() id: number, itemUpdate: Loan): Promise<Loan> {
-    return this.loanService.update(id, itemUpdate);
+  async update(@Body() itemUpdate: LoanUpdateDTO): Promise<Res> {
+    return this.loanService.update(itemUpdate);
   }
 
   @Post('/delete')
-  async delete(@Body() id: number): Promise<void> {
-    return this.loanService.delete(id);
+  async delete(@Body() item: LoanDetailDTO): Promise<Res> {
+    return this.loanService.delete(item);
   }
 }

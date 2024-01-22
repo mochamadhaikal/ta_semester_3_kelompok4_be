@@ -1,11 +1,23 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class ProcessImportDto {
+export class FriendUpdateDTO {
+  @IsNumber()
+  @IsNotEmpty()
+  friendId: number;
+
   @IsString()
   @IsNotEmpty()
-  importId: string;
+  name: string;
 
   @IsString()
   @IsNotEmpty()
-  userId: string;
+  address: string;
+
+  @IsString()
+  @IsNotEmpty()
+  email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  phoneNumber: string;
 }

@@ -6,6 +6,7 @@ import { FriendModule } from './modules/friend/friend.module';
 import { LoanModule } from './modules/loan/loan.module';
 import { DvdModule } from './modules/dvd/dvd.module';
 import { envConfigOptions, typeOrmConfig } from './configs';
+import { CasesModule } from './modules/studi-cases/study-cases.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { envConfigOptions, typeOrmConfig } from './configs';
     FriendModule,
     LoanModule,
     DvdModule,
+    CasesModule,
   ],
   controllers: [],
   providers: [],

@@ -3,7 +3,7 @@ import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class DvdUpdateDTO {
   @IsNumber()
   @IsNotEmpty()
-  id: number;
+  dvdId: number;
 
   @IsString()
   @IsNotEmpty()

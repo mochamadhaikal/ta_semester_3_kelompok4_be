@@ -5,7 +5,7 @@ import { Entity, Column, BaseEntity, PrimaryColumn } from 'typeorm';
 @Entity({ name: 'loan', schema: 'public' })
 export class Loan extends BaseEntity {
   @PrimaryColumn({ name: 'loan_id', type: 'int' })
-  id: number;
+  loanId: number;
 
   @Column({ name: 'friend_id' })
   friendId: number;
@@ -14,8 +14,8 @@ export class Loan extends BaseEntity {
   dvdId: number;
 
   @Column({ name: 'loan_date' })
-  loanDate: string;
+  loanDate: Date;
 
   @Column({ name: 'return_date' })
-  returnDate: string;
+  returnDate: Date;
 }

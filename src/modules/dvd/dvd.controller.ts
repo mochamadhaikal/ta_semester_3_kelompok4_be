@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { DvdService } from './dvd.service';
 import { Dvd } from './entities';
-import { DvdDetailDTO } from './dto';
+import { DvdCreateDTO, DvdDetailDTO, DvdUpdateDTO } from './dto';
+import { Res } from 'src/configs';
 
 @Controller('dvd')
 export class DvdController {
@@ -12,23 +13,23 @@ export class DvdController {
     return this.dvdService.findAll();
   }
 
-  @Get('/detail/:id')
-  findOne(@Param('id') id: DvdDetailDTO): Promise<Dvd> {
-    return this.dvdService.findOne(id);
+  @Post('/detail')
+  findOne(@Body() item: DvdDetailDTO): Promise<Dvd> {
+    return this.dvdService.findOne(item);
   }
 
   @Post('/save')
-  create(@Body() item: Dvd): Promise<Dvd> {
+  create(@Body() item: DvdCreateDTO): Promise<Res> {
     return this.dvdService.create(item);
   }
 
   @Post('/edit')
-  async update(@Body() id: number, itemUpdate: Dvd): Promise<Dvd> {
-    return this.dvdService.update(id, itemUpdate);
+  async update(@Body() itemUpdate: DvdUpdateDTO): Promise<Res> {
+    return this.dvdService.update(itemUpdate);
   }
 
   @Post('/delete')
-  async delete(@Body() id: number): Promise<void> {
-    return this.dvdService.delete(id);
+  async delete(@Body() item: DvdDetailDTO): Promise<Res> {
+    return this.dvdService.delete(item);
   }
 }

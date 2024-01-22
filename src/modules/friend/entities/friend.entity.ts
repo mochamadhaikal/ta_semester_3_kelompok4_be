@@ -1,9 +1,17 @@
-import { Entity, Column, BaseEntity, PrimaryColumn } from 'typeorm';
+import { Loan } from 'src/modules/loan/entities';
+import {
+  Entity,
+  Column,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  OneToMany,
+} from 'typeorm';
 
 @Entity({ name: 'friend', schema: 'public' })
 export class Friend extends BaseEntity {
-  @PrimaryColumn({ name: 'friend_id', type: 'int' })
-  id: number;
+  @PrimaryGeneratedColumn({ name: 'friend_id', type: 'int' })
+  @OneToMany(() => Loan, (loan) => loan.friendId, { cascade: ['remove'] })
+  friendId: number;
 
   @Column({ name: 'name' })
   name: string;

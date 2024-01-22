@@ -4,7 +4,7 @@ CREATE DATABASE dvd_library;
 
 -- TABLE BEGIN
 CREATE TABLE friend (
-    friend_id INT PRIMARY KEY,
+    friend_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     address VARCHAR(255),
     email VARCHAR(100),
@@ -12,13 +12,13 @@ CREATE TABLE friend (
 );
 
 CREATE TABLE dvd (
-    dvd_id INT PRIMARY KEY,
+    dvd_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100),
     actor_name VARCHAR(100)
 );
 
 CREATE TABLE loan (
-    loan_id INT PRIMARY KEY,
+    loan_id INT AUTO_INCREMENT PRIMARY KEY,
     friend_id INT,
     dvd_id INT,
     loan_date DATE,
@@ -64,11 +64,11 @@ WHERE MONTH(loan.loan_date) = 1;
 
 SELECT 
     friend.name, 
-    COUNT(loan.friend_id) AS loan_amound
+    COUNT(loan.friend_id) AS loan_amount
 FROM loan
 INNER JOIN friend ON loan.friend_id = friend.friend_id
 GROUP BY loan.friend_id
-ORDER BY loan_amound DESC;
+ORDER BY loan_amount DESC;
 
 SELECT 
     MAX(loan.loan_date) as last_borrowed
