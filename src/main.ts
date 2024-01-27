@@ -6,9 +6,11 @@ import { ValidationPipe } from '@nestjs/common';
 dotenv.config();
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   app.useGlobalPipes(new ValidationPipe());
   app.use(helmet());
-  await app.listen(3000);
+  await app.listen(process.env.PORT, () => {
+    console.log(`Application is running on port: ${process.env.PORT}`);
+  });
 }
 bootstrap();

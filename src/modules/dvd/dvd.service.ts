@@ -88,6 +88,7 @@ export class DvdService {
     try {
       await this.loanRepository.delete({ dvdId: dvdDelete.dvdId });
       await this.dvdRepository.delete({ dvdId: dvdDelete.dvdId });
+      console.log('Success Delete Dvd');
       return {
         status: true,
         message: 'Success Delete Dvd',
