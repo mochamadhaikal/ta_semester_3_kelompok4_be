@@ -17,4 +17,12 @@ export class CasesController {
   getQuizThree() {
     return this.casesService.getQuizThree();
   }
+  @Get('/r1')
+  getReportOne() {
+    return this.casesService.getReportOne();
+  }
+  @Get('/r2')
+  getReportTwo() {
+    return this.casesService.getReportTwo();
+  }
 }
