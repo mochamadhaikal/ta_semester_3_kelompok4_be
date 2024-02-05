@@ -13,7 +13,7 @@ export class Dvd extends BaseEntity {
   @PrimaryGeneratedColumn('increment')
   @PrimaryColumn({ name: 'dvd_id' })
   @OneToMany(() => Loan, (loan) => loan.dvdId, { cascade: ['remove'] })
-  dvdId: number;
+  dvdId: string;
 
   @Column({ name: 'title', unique: true, nullable: false })
   title: string;

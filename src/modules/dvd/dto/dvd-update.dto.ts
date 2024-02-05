@@ -1,9 +1,9 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class DvdUpdateDTO {
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  dvdId: number;
+  dvdId: string;
 
   @IsString()
   @IsNotEmpty()

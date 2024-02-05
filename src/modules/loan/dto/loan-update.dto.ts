@@ -1,5 +1,11 @@
 import { Transform } from 'class-transformer';
-import { IsDate, IsNotEmpty, IsNumber, MinDate } from 'class-validator';
+import {
+  IsDate,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MinDate,
+} from 'class-validator';
 
 export class LoanUpdateDTO {
   @IsNumber()
@@ -10,9 +16,9 @@ export class LoanUpdateDTO {
   @IsNotEmpty()
   friendId: number;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  dvdId: number;
+  dvdId: string;
 
   @IsNotEmpty()
   @Transform(({ value }) => value && new Date(value))

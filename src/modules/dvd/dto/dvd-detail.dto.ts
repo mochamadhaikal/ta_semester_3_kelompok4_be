@@ -1,7 +1,7 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class DvdDetailDTO {
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  dvdId: number;
+  dvdId: string;
 }

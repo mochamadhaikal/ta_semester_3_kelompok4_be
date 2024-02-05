@@ -11,7 +11,7 @@ export class Loan extends BaseEntity {
   friendId: number;
 
   @Column({ name: 'dvd_id' })
-  dvdId: number;
+  dvdId: string;
 
   @Column({ name: 'loan_date' })
   loanDate: Date;

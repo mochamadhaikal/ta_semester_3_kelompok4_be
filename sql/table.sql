@@ -12,7 +12,7 @@ CREATE TABLE friend (
 );
 
 CREATE TABLE dvd (
-    dvd_id INT AUTO_INCREMENT PRIMARY KEY,
+    dvd_id VARCHAR(13) PRIMARY KEY,
     title VARCHAR(100),
     actor_name VARCHAR(100)
 );
@@ -20,7 +20,7 @@ CREATE TABLE dvd (
 CREATE TABLE loan (
     loan_id INT AUTO_INCREMENT PRIMARY KEY,
     friend_id INT,
-    dvd_id INT,
+    dvd_id VARCHAR(13),
     loan_date DATE,
     return_date DATE,
     FOREIGN KEY (friend_id) REFERENCES friend(friend_id),
@@ -37,20 +37,20 @@ INSERT INTO friend (friend_id, name, address, email, phone_number) VALUES
 (5, 'Eko', 'Jl. Sudirman No. 50', 'eko@gmail.com', '081234567894');
 
 INSERT INTO dvd (dvd_id, title, actor_name) VALUES
-(1, 'Die Another Day', 'Pierce Brosnan'),
-(2, 'Inception', 'Leonardo DiCaprio'),
-(3, 'Interstellar', 'Matthew McConaughey'),
-(4, 'The Matrix', 'Keanu Reeves'),
-(5, 'Avatar', 'Sam Worthington');
+('DVD2024000001', 'Die Another Day', 'Pierce Brosnan'),
+('DVD2024000002', 'Inception', 'Leonardo DiCaprio'),
+('DVD2024000003', 'Interstellar', 'Matthew McConaughey'),
+('DVD2024000004', 'The Matrix', 'Keanu Reeves'),
+('DVD2024000005', 'Avatar', 'Sam Worthington');
 
 INSERT INTO loan (loan_id, friend_id, dvd_id, loan_date, return_date) VALUES
-(1, 1, 2, '2024-01-01', '2024-01-07'),
-(2, 2, 1, '2024-01-05', '2024-01-12'),
-(3, 3, 3, '2024-01-10', '2024-01-17'),
-(4, 4, 4, '2024-02-01', '2024-02-08'),
-(5, 5, 5, '2024-02-03', '2024-02-10'),
-(6, 5, 4, '2024-03-03', '2024-03-10'),
-(7, 5, 3, '2024-04-03', '2024-05-11');
+(1, 1, 'DVD2024000002', '2024-01-01', '2024-01-07'),
+(2, 2, 'DVD2024000001', '2024-01-05', '2024-01-12'),
+(3, 3, 'DVD2024000003', '2024-01-10', '2024-01-17'),
+(4, 4, 'DVD2024000004', '2024-02-01', '2024-02-08'),
+(5, 5, 'DVD2024000005', '2024-02-03', '2024-02-10'),
+(6, 5, 'DVD2024000004', '2024-03-03', '2024-03-10'),
+(7, 5, 'DVD2024000003', '2024-04-03', '2024-05-11');
 -- INSERT DATA END
 
 -- SELECT DATA BEGIN

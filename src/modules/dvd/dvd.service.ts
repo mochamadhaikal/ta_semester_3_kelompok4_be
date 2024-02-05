@@ -5,6 +5,7 @@ import { Dvd } from './entities';
 import { DvdCreateDTO, DvdDetailDTO, DvdUpdateDTO } from './dto';
 import { Loan } from '../loan/entities';
 import { Res } from 'src/configs';
+import moment from 'moment';
 
 @Injectable()
 export class DvdService {
@@ -32,6 +33,7 @@ export class DvdService {
   async create(item: DvdCreateDTO): Promise<Res> {
     try {
       const check = await this.dvdRepository.findBy({
+        dvdId: `DVD${moment().format('YYYYHHmmss')}`,
         title: item.title,
         actorName: item.actorName,
       });
